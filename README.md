@@ -3,11 +3,11 @@ This puzzle-solving and choose-your-own-adventure game is a multi-file game writ
 
 
 ## Technology
-
+*
 
 
 ## Dependencies
-
+*
 
 
 ## Setup
@@ -15,3 +15,4 @@ This puzzle-solving and choose-your-own-adventure game is a multi-file game writ
 
 
 ## Upcoming Features
+* Use Sinatra to transform this into a web app game
