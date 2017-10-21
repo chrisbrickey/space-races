@@ -1,12 +1,16 @@
 from home import home_start, ending
-from planets import Planet, planet_list
+from planets import Planet
+from planets import planet_list
 from puzzles import puzzles
+
+planets = ["planet1", "planet2", "planet3"]
+puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
 
 
 def game_engine (trip_counter):
 
     while trip_counter <= 1:
-        trip_output = atlas(trip_counter)
+        trip_output = map(trip_counter)
         trip_counter += 1
 
     if  int(trip_output) >= 100:
@@ -19,25 +23,23 @@ def game_engine (trip_counter):
     ending(player_name, end_status)
 
 
-def atlas (trip_counter):
+def map (trip_counter):
 
     if trip_counter == 0:
         home_start(player_name)
         return "leaving home"
 
     elif trip_counter == 1:
-        print "\nYou've been given a map with %s potential planets on it." % (len(planet_list))
-        print "You only have enough fuel to travel to one of those planets."
-        print "Below is a list of the puzzles you have to solve to get the coordinates of each planet.\n"
+        print "\n%s potential planets have been identified." % (len(planets))
+        print "You only have enough fuel to travel to 1 of those planets."
+        print "Below is a list of the planets and the puzzles you have to solve to get the coordinates of each planet.\n"
 
-        #in subsequent versions, pull from planet_list instead of hard coded
-        print """
-            planet1: guess-a-number
-            planet2: meteorite-laser-reflector
-            planet3: deal-me-in
-            """
+        for index in range(len(planets)):
+            print "%s: %s" % (planets[index], puzzle_list[index])
 
-        selected_planet_name = raw_input("\nType the name of the planet you want to explore (e.g. planet3): ")
+        selected_planet_name = raw_input("\nWhich planet would you like to visit? ")
+        while selected_planet_name not in planets:
+            selected_planet_name = raw_input("\nThat's not a real planet. Try again: ")
 
         puzzles(selected_planet_name)
 
@@ -56,6 +58,6 @@ def atlas (trip_counter):
         pass
 
 
-player_name = raw_input("Please type your name: ")
+player_name = raw_input("What's your name? ")
 trip_counter = 0
 game_engine(trip_counter)
