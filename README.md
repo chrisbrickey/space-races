@@ -1,18 +1,19 @@
 # space_race_game
-This puzzle-solving and choose-your-own-adventure game is a multi-file game written in object-oriented code (python).
+In this object-oriented, multi-file Python game, the user is tasked with saving humanity by finding another suitable planet.  It requires puzzle-solving in a choose-your-own-adventure style.
 
 
 ## Technology
-*
+* Python 2.7
 
 
 ## Dependencies
 *
 
 
-## Setup
-* Run from terminal: `python primary.py`
+## To run this program
+* From terminal: `python primary.py`
 
 
-## Upcoming Features
-* Use Sinatra to transform this into a web app game
+## Future Development
+* Build out frontend in vanilla JavaScript
+* Use Rack to host with custom url
