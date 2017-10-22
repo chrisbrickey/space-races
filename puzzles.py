@@ -1,49 +1,44 @@
 import random
 
-mlr_choices = ["meteorite", "laser", "reflector"]
-
-# mlr_table = {
-#     1: "meteorite",
-#     2: "laser",
-#     3: "reflector"
-# }
-
-#read this like....Does meteorite beat laser?...No, YOU LOSE
-mlr_outcome_table = {
-    "mm": "DRAW",
-    "ml": "Laser destroys meteorite. YOU LOSE.",
-    "mr": "Meteorite crushes reflector. YOU WIN! Coordinates unlocked.",
-    "lm": "Laser destroys meteorite. YOU WIN! Coordinates unlocked.",
-    "ll": "DRAW",
-    "lr": "Reflector deflects laser. YOU LOSE.",
-    "rm": "Meteorite crushes reflector. YOU LOSE.",
-    "rl": "Reflector deflects laser. YOU WIN! Coordinates unlocked.",
-    "rr": "DRAW"
-}
-
-#keys = numeric representation; values = [name of card, point value]
-blackjack_table = {
-    1: ["one", 1],
-    2: ["two", 2],
-    3: ["three", 3],
-    4: ["four", 4],
-    5: ["five", 5],
-    6: ["six", 6],
-    7: ["seven", 7],
-    8: ["eight", 8],
-    9: ["nine", 9],
-    10: ["ten", 10],
-    11: ["jack", 10],
-    12: ["queen", 10],
-    13: ["king", 10],
-    14: ["ace", 11]
-}
-
-guess_lowerbound = 1
-guess_upperbound = 100
-
-
 class Puzzle (object):
+
+    guess_lowerbound = 1
+    guess_upperbound = 100
+
+    mlr_choices = ["meteorite", "laser", "reflector"]
+
+    #read this like....Does meteorite beat laser?...No, YOU LOSE
+    mlr_outcome_table = {
+        "mm": "DRAW",
+        "ml": "Laser destroys meteorite. YOU LOSE.",
+        "mr": "Meteorite crushes reflector. YOU WIN! Coordinates unlocked.",
+        "lm": "Laser destroys meteorite. YOU WIN! Coordinates unlocked.",
+        "ll": "DRAW",
+        "lr": "Reflector deflects laser. YOU LOSE.",
+        "rm": "Meteorite crushes reflector. YOU LOSE.",
+        "rl": "Reflector deflects laser. YOU WIN! Coordinates unlocked.",
+        "rr": "DRAW"
+    }
+
+    #keys = numeric representation; values = [name of card, point value]
+    blackjack_table = {
+        1: ["one", 1],
+        2: ["two", 2],
+        3: ["three", 3],
+        4: ["four", 4],
+        5: ["five", 5],
+        6: ["six", 6],
+        7: ["seven", 7],
+        8: ["eight", 8],
+        9: ["nine", 9],
+        10: ["ten", 10],
+        11: ["jack", 10],
+        12: ["queen", 10],
+        13: ["king", 10],
+        14: ["ace", 11]
+    }
+
+
 
     def __init__(self, planet_name):
         self.planet_name = planet_name
@@ -74,14 +69,14 @@ class Puzzle (object):
             If you don't guess correctly by the tenth chance, the game ends.\n
             """
 
-        secret_number = random.randint(guess_lowerbound, guess_upperbound)
+        secret_number = random.randint(Puzzle.guess_lowerbound, Puzzle.guess_upperbound)
 
         puzzle_counter = 1
         while puzzle_counter <= 10:
 
-            user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
-            while (self.is_int(user_guess) == False) or (int(user_guess) not in range(guess_lowerbound, (guess_upperbound + 1))):
-                user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
+            user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (Puzzle.guess_lowerbound, Puzzle.guess_upperbound))
+            while (self.is_int(user_guess) == False) or (int(user_guess) not in range(Puzzle.guess_lowerbound, (Puzzle.guess_upperbound + 1))):
+                user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (Puzzle.guess_lowerbound, Puzzle.guess_upperbound))
 
             user_guess = int(user_guess)
 
@@ -121,15 +116,15 @@ class Puzzle (object):
 
             print "\n\t----- Playing round # %d -----" % (puzzle_counter + 1)
 
-            computer_choice = mlr_choices[random.randint(0, (len(mlr_choices) - 1))]
+            computer_choice = Puzzle.mlr_choices[random.randint(0, (len(Puzzle.mlr_choices) - 1))]
 
             user_choice = raw_input("\nSelect your weapon by typing 'meteorite', 'laser', or 'reflector': ")
-            while user_choice not in mlr_choices:
+            while user_choice not in Puzzle.mlr_choices:
                 user_choice = raw_input("\nThat's not a meteorite, laser, or reflector. Try again: ")
 
             print "\n\nThe computer chose: %s" % computer_choice
             matchup = user_choice.split()[0][0] + computer_choice.split()[0][0]
-            print "\n %s" % mlr_outcome_table[matchup]
+            print "\n %s" % Puzzle.mlr_outcome_table[matchup]
 
             if puzzle_counter == 2:
 
@@ -169,28 +164,28 @@ class Puzzle (object):
             print "\n\t----- Playing round # %d -----\n" % (puzzle_counter + 1)
             dealer_card1 = random.randint(1, 14)
             dealer_card2 = random.randint(1, 14)
-            dealer_sum = (blackjack_table[dealer_card1][1]) + (blackjack_table[dealer_card2][1])
+            dealer_sum = (Puzzle.blackjack_table[dealer_card1][1]) + (Puzzle.blackjack_table[dealer_card2][1])
 
             player_card1 = random.randint(1, 14)
             player_card2 = random.randint(1, 14)
 
-            print "The dealer has a(n) %s." % blackjack_table[dealer_card1][0]
-            print "You have a(n) %s." % blackjack_table[player_card1][0]
+            print "The dealer has a(n) %s." % Puzzle.blackjack_table[dealer_card1][0]
+            print "You have a(n) %s." % Puzzle.blackjack_table[player_card1][0]
             command = raw_input("\n\nType 'stand' to play with only one card. Type 'hit' to get a second card: ")
             while command not in ["stand", "hit"]:
                 command = raw_input("\nThat's not 'stand' or 'hit'. Try again: ")
 
             if command == "stand":
-                player_sum = blackjack_table[player_card1][1]
+                player_sum = Puzzle.blackjack_table[player_card1][1]
                 print "Your single card is worth " + str(player_sum) + " points."
             elif command == "hit":
-                print "\nYour second card is a(n) " + str(blackjack_table[player_card2][0]) + "."
-                player_sum = (blackjack_table[player_card1][1]) + (blackjack_table[player_card2][1])
+                print "\nYour second card is a(n) " + str(Puzzle.blackjack_table[player_card2][0]) + "."
+                player_sum = (Puzzle.blackjack_table[player_card1][1]) + (Puzzle.blackjack_table[player_card2][1])
             else:
                 pass
 
             print "The sum value of your card(s): %s" % player_sum
-            print "\nThe dealer's second card is a(n) %s" % blackjack_table[dealer_card2][0]
+            print "\nThe dealer's second card is a(n) %s" % Puzzle.blackjack_table[dealer_card2][0]
             print "So the dealer's sum value is: %s" % dealer_sum
 
             if puzzle_counter == 2:
@@ -284,7 +279,7 @@ class Puzzle (object):
     #         user_choice = raw_input("\nSelect your weapon by typing 'meteorite', 'laser', or 'reflector': ")
     #         print "\nThe computer chose: " + str(computer_choice)
     #         matchup = user_choice.split()[0][0] + computer_choice.split()[0][0]
-    #         print mlr_outcome_table[matchup]
+    #         print Puzzle.mlr_outcome_table[matchup]
     #
     #         if puzzle_counter == 2:
     #
@@ -323,26 +318,26 @@ class Puzzle (object):
     #         print "\n\t----- Playing round # %d -----" % (puzzle_counter + 1)
     #         dealer_card1 = random.randint(1, 14)
     #         dealer_card2 = random.randint(1, 14)
-    #         dealer_sum = (blackjack_table[dealer_card1][1]) + (blackjack_table[dealer_card2][1])
+    #         dealer_sum = (Puzzle.blackjack_table[dealer_card1][1]) + (Puzzle.blackjack_table[dealer_card2][1])
     #
     #         player_card1 = random.randint(1, 14)
     #         player_card2 = random.randint(1, 14)
     #
-    #         print "The dealer has a(n) " + str(blackjack_table[dealer_card1][0]) + "."
-    #         print "You have a(n) " + str(blackjack_table[player_card1][0]) + "."
+    #         print "The dealer has a(n) " + str(Puzzle.blackjack_table[dealer_card1][0]) + "."
+    #         print "You have a(n) " + str(Puzzle.blackjack_table[player_card1][0]) + "."
     #         command = raw_input("\nType 'stand' to play with only one card. Type 'hit to get a second card: ")
     #
     #         if command == "stand":
-    #             player_sum = blackjack_table[player_card1][1]
+    #             player_sum = Puzzle.blackjack_table[player_card1][1]
     #             print "Your single card is worth " + str(player_sum) + " points."
     #         elif command == "hit":
-    #             print "\nYour second card is a(n) " + str(blackjack_table[player_card2][0]) + "."
-    #             player_sum = (blackjack_table[player_card1][1]) + (blackjack_table[player_card2][1])
+    #             print "\nYour second card is a(n) " + str(Puzzle.blackjack_table[player_card2][0]) + "."
+    #             player_sum = (Puzzle.blackjack_table[player_card1][1]) + (Puzzle.blackjack_table[player_card2][1])
     #         else:
     #             print "invalid entry"
     #
     #         print "The sum value of your card(s): " + str(player_sum)
-    #         print "\nThe dealer's second card is a(n) " + str(blackjack_table[dealer_card2][0])
+    #         print "\nThe dealer's second card is a(n) " + str(Puzzle.blackjack_table[dealer_card2][0])
     #         print "So the dealer's sum value is: " + str(dealer_sum)
     #
     #         if puzzle_counter == 2:
