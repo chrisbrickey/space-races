@@ -30,9 +30,7 @@ class Game (object):
                 exit()
             else:
                 puzzle_result = self.get_coordinates()
-                print "PUZZLE RESULT: %s" % puzzle_result
                 if puzzle_result == "success":
-                    print "im in the success fork===================================="
                     break
                 else:
                     self.puzzle_count += 1
@@ -73,7 +71,6 @@ class Game (object):
 
         new_puzzle = Puzzle(selected_puzzle_name)
         result = new_puzzle.run_puzzle()
-        print "RESULT: %s" % result
         return result
 
 
