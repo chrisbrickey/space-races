@@ -1,43 +1,46 @@
 from home import start, end
-from planets import Planet, planet_list, planets
+from planets import Planet, planets, planet_attributes
 from puzzles import Puzzle
 from utilities import is_int
 
-
+# Next steps: move these variables to respective files and classes
 puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
 planet_count = len(planets)
+planet_fuel_cost = 1000
+
 
 class Game (object):
 
     def __init__(self, player_name):
         self.player_name = player_name
-        self.planets_visited = []
-        self.trip_counter = 0
-        self.puzzle_count = 0
+        self.fuel = 1000
+        self.puzzle_attempts = 0
+        self.planets_visited = [] # collects indices after a puzzle is solved
 
 
     def play(self):
-        start(self.player_name)
+        start(self.player_name, self.fuel, planet_fuel_cost)
 
-        while self.puzzle_count <= 3:
+        while self.puzzle_attempts <= 3:
 
-            if self.puzzle_count == 3:
+            if self.puzzle_attempts == 3:
                 print """
                     You have exhausted your 3 attempts to find coordinates.\n
                     Please play again.
                     """
                 exit()
             else:
-                puzzle_result = self.get_coordinates()
-                if puzzle_result == "success":
+                result_status, planet_index = self.get_coordinates()
+                if (result_status != "not success"): # puzzle was solved
+                    self.planets_visited.append(planet_index)
                     break
                 else:
-                    self.puzzle_count += 1
+                    self.puzzle_attempts += 1
 
 
-        while self.trip_counter < 1:
-            trip_output = self.travel_to_planet()
-            self.trip_counter += 1
+        while (self.fuel > 0):  # fuel subtraction made immediately after puzzle is solved above
+            trip_output = self.travel_to_planet(planet_index)
+            self.fuel -= planet_fuel_cost
 
         #rewrite so that user can visit 2 planets instead of just one
         if  int(trip_output) >= 100:
@@ -52,7 +55,7 @@ class Game (object):
 
     #instance methods do not need to be coded above the line where they are called; that is not the case for functions (outside of classes)
     def get_coordinates(self):
-        print "You have attempted %s puzzle(s). You have %s attempt(s) remaining." % (self.puzzle_count, (3 - self.puzzle_count))
+        print "You have attempted %s puzzle(s). You have %s attempt(s) remaining." % (self.puzzle_attempts, (3 - self.puzzle_attempts))
         print "Below is a list of the planets and the puzzles you must solve to get the coordinates of each planet.\n"
 
         for index in range(planet_count):
@@ -68,16 +71,15 @@ class Game (object):
 
         print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
 
+        # Next steps:  use index instead of puzzle name to choose and play puzzle
         new_puzzle = Puzzle(selected_puzzle_name)
         result = new_puzzle.run_puzzle()
-        return result
+        return [result, planet_puzzle_index]
 
 
-    def travel_to_planet(self):
-        for planet in planet_list:
-            if planet._name == selected_planet_name:
-                selected_planet = planet
-                break
+    def travel_to_planet(self, planet_index):
+        array_of_planet_attributes = planet_attributes[planet_index]
+        selected_planet = Planet(*array_of_planet_attributes)
 
         selected_planet.travel()
         selected_planet.test()
