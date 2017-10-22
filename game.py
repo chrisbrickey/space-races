@@ -15,14 +15,34 @@ class Game (object):
 
     def __init__(self, player_name):
         self.player_name = player_name
+        self.planets_visited = []
         self.trip_counter = 0
+        self.puzzle_count = 0
 
 
     def play(self):
         start(self.player_name)
 
-        while self.trip_counter <= 1:
-            trip_output = self.game_map()
+        while self.puzzle_count <= 3:
+            print "puzzle_count: %s" % self.puzzle_count
+
+            if self.puzzle_count == 3:
+                print """
+                    You have exhausted your 3 attempts to find coordinates.\n
+                    Please play again.
+                    """
+                exit()
+            else:
+                puzzle_result = self.get_coordinates()
+                if puzzle_result == "success":
+                    print "im in the success fork===================================="
+                    break
+                else:
+                    self.puzzle_count += 1
+
+
+        while self.trip_counter < 1:
+            trip_output = self.travel_to_planet()
             self.trip_counter += 1
 
         #rewrite so that user can visit 2 planets instead of just one
@@ -37,44 +57,32 @@ class Game (object):
 
 
     #instance methods do not need to be coded above the line where they are called; that is not the case for functions (outside of classes)
-    def game_map(self):
-        print "\n%s potential planets have been identified." % (len(planets))
-        print "You only have enough fuel to travel to 1 of those planets, but first you must solve puzzles to get the coordinates of planet."
+    def get_coordinates(self):
+        print "You have attempted %s puzzle(s). You have %s attempt(s) remaining." % (self.puzzle_count, (3 - self.puzzle_count))
+        print "Below is a list of the puzzles you may solve to get the coordinates of each planet.\n"
 
-        coordinate_attempts = []
+        for index in range(len(planets)):
+            print "%s: %s" % (puzzle_list[index], planets[index])
+
+        selected_planet_name = raw_input("\nWhich planet would you like to visit? ")
+        while selected_planet_name not in planets:
+            selected_planet_name = raw_input("\nThat's not a real planet. Try again: ")
+
+        print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
+
+        new_puzzle = Puzzle(selected_planet_name)
+        return new_puzzle.choose_puzzle()
 
 
-        #rewrite so that user can visit 2 planets instead of just one
-        if self.trip_counter == 0:
-            print "You have attempted %s puzzles. So you can selec"
-            print "Below is a list of the planets and the puzzles you have to solve to get the coordinates of each planet.\n"
+    def travel_to_planet(self):
+        for planet in planet_list:
+            if planet._name == selected_planet_name:
+                selected_planet = planet
+                break
 
-            for index in range(len(planets)):
-                print "%s: %s" % (planets[index], puzzle_list[index])
-
-            selected_planet_name = raw_input("\nWhich planet would you like to visit? ")
-            while selected_planet_name not in planets:
-                selected_planet_name = raw_input("\nThat's not a real planet. Try again: ")
-
-            print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
-
-            coordinate_attempts.append(selected_planet_name)
-            new_puzzle = Puzzle(selected_planet_name)
-            new_puzzle.choose_puzzle()
-
-            for planet in planet_list:
-                if planet._name == selected_planet_name:
-                    selected_planet = planet
-                    break
-
-            selected_planet.travel()
-
-            selected_planet.test()
-
-            return selected_planet.analyze()
-
-        else:
-            pass
+        selected_planet.travel()
+        selected_planet.test()
+        return selected_planet.analyze()
 
 
 
