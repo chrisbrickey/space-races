@@ -1,16 +1,11 @@
 from home import start, end
 from planets import Planet, planet_list, planets
 from puzzles import Puzzle
+from utilities import is_int
 
 
 puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
 planet_count = len(planets)
-#
-# planet_list = [
-#     Planet("planet1", "guess-a-number", 17, 25, 19, 23),
-#     Planet("planet2", "meteorite-laser-reflector", 31, 27, 14, 35),
-#     Planet("planet3", "deal-me-in", 21, 18, 12, 37)
-#     ]
 
 class Game (object):
 
@@ -66,7 +61,7 @@ class Game (object):
             print "%s) %s: %s" % ((index + 1), planets[index], puzzle_list[index])
 
         selected_number = raw_input("\nType the number of the planet you wish to attempt (1, 2, etc.): ")
-        while (is_int(user_guess) == False) or (  int(selected_number) not in range(1, (planet_count + 1))):
+        while (is_int(selected_number) == False) or (  int(selected_number) not in range(1, (planet_count + 1))):
             selected_number = raw_input("\nThat's out of range. Try again: ")
 
         planet_puzzle_index = int(selected_number) - 1
