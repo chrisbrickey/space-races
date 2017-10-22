@@ -1,15 +1,15 @@
 from home import start, end
-from planets import Planet, planets, planet_attributes
+from planets import Planet, planet_attributes
 from puzzles import Puzzle
 from utilities import is_int
 
 # Next steps: move these variables to respective files and classes
 puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
-planet_count = len(planets)
+planet_count = len(planet_attributes)
 planet_fuel_cost = 1000
-planet_score_minimum = 100
 
-
+# Next steps: move these variables inside Game class
+min_to_sustain_human_life = 100
 starter_fuel_alottment = planet_fuel_cost
 max_coordinate_attempts = 3
 
@@ -46,7 +46,7 @@ class Game (object):
             self.fuel -= planet_fuel_cost
 
         #rewrite so that user can visit 2 planets instead of just one
-        if  int(trip_output) >= planet_score_minimum:
+        if  int(trip_output) >= min_to_sustain_human_life:
             end_status = "won"
         else:
             end_status = "lost"
@@ -60,14 +60,14 @@ class Game (object):
         print "Below is a list of the planets and the puzzles you must solve to get the coordinates of each planet.\n"
 
         for index in range(planet_count):
-            print "%s) %s: %s" % ((index + 1), planets[index], puzzle_list[index])
+            print "%s) %s: %s" % ((index + 1), planet_attributes[index][0], puzzle_list[index])
 
         selected_number = raw_input("\nType the number of the planet you wish to attempt (1, 2, 3, etc.): ")
         while (is_int(selected_number) == False) or (  int(selected_number) not in range(1, (planet_count + 1))):
             selected_number = raw_input("\nThat's out of range. Try again: ")
 
         planet_puzzle_index = int(selected_number) - 1
-        selected_planet_name = planets[planet_puzzle_index]
+        selected_planet_name = planet_attributes[planet_puzzle_index][0]
         selected_puzzle_name = puzzle_list[planet_puzzle_index]
 
         print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()

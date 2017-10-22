@@ -1,10 +1,8 @@
-# Next steps: Refactor so that other files use planet_attributes instead of planets array below
-planets = ["planet1", "planet2", "planet3"]
-
+# Next steps: move this inside Planet Class
 planet_attributes = {
-    0 : ["planet1", 17, 25, 19, 23],
-    1 : ["planet2", 31, 27, 14, 35],
-    2 : ["planet3", 21, 18, 12, 37]
+    0 : ["planet1", 17, 25, 19, 23], # sum = 84
+    1 : ["planet2", 31, 27, 14, 35], # sum = 107
+    2 : ["planet3", 21, 18, 12, 37] # sum = 88
     }
 
 
