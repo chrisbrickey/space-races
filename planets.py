@@ -1,15 +1,23 @@
+# Next steps: Refactor so that other files use planet_attributes instead of planets array below
 planets = ["planet1", "planet2", "planet3"]
+
 # planet_list = [
 #     Planet("planet1", "guess-a-number", 17, 25, 19, 23),
 #     Planet("planet2", "meteorite-laser-reflector", 31, 27, 14, 35),
 #     Planet("planet3", "deal-me-in", 21, 18, 12, 37)
 #     ]
 
+planet_attributes = {
+    0 : ["planet1", 17, 25, 19, 23],
+    1 : ["planet2", 31, 27, 14, 35],
+    2 : ["planet3", 21, 18, 12, 37]
+    }
+
+
 class Planet (object):
 
-    def __init__(self, planet_name, puzzle_name, air, water, soil, inhabitants):
+    def __init__(self, planet_name, air, water, soil, inhabitants):
         self._name = planet_name
-        self._puzzle = puzzle_name
         self._air = air
         self._water = water
         self._soil = soil
