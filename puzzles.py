@@ -1,3 +1,5 @@
+# Next steps:  Break into classes: PuzzleSelector, GuessNumber, MLR, DealMeIn.  The last three will have play methods
+
 import random
 from utilities import is_int
 from planets import planets
