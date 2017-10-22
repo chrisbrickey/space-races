@@ -79,15 +79,9 @@ class Puzzle (object):
         puzzle_counter = 1
         while puzzle_counter <= 10:
 
-            user_guess = raw_input("\nType an integer between 1 and 100 (inclusive): ")
-            # user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
-
-            # print self.is_int(user_guess)
-            # exit()
-
+            user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
             while (self.is_int(user_guess) == False) or (int(user_guess) not in range(guess_lowerbound, (guess_upperbound + 1))):
-                user_guess = raw_input("\nThat's out of range. Type an integer between 1 and 100 (inclusive): ")
-                # user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
+                user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
 
             user_guess = int(user_guess)
 
