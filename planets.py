@@ -1,13 +1,5 @@
-# from puzzles import Puzzle
-
 # Next steps: Refactor so that other files use planet_attributes instead of planets array below
 planets = ["planet1", "planet2", "planet3"]
-
-# planet_list = [
-#     Planet("planet1", "guess-a-number", 17, 25, 19, 23),
-#     Planet("planet2", "meteorite-laser-reflector", 31, 27, 14, 35),
-#     Planet("planet3", "deal-me-in", 21, 18, 12, 37)
-#     ]
 
 planet_attributes = {
     0 : ["planet1", 17, 25, 19, 23],
@@ -62,19 +54,3 @@ class Planet (object):
             print "\nAuthorization Error: Please make sure you typed GO."
 
         return sum_of_results
-
-
-planet_list = [
-    Planet("planet1", 17, 25, 19, 23),
-    Planet("planet2", 31, 27, 14, 35),
-    Planet("planet3", 21, 18, 12, 37)
-    ]
-
-#-----below code isfor testing when running this file only-----
-#selected_planet_name = raw_input("\nType the name of the planet you want to try: ")
-
-#for planet in planet_list:
-#    if planet._name == selected_planet_name:
-#        selected_planet = planet
-#        break
-#selected_planet.travel()
