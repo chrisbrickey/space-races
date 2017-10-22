@@ -1,9 +1,9 @@
-def home_start (player_name):
+def home_start(player_name):
     print "\nWelcome to Space Race, " + player_name + "!"
     print "Earth's environment is quickly deteriorating."
     print "Your mission is to find a planet that is suitable for relocation of friendly humans."
 
-def ending (player_name, end_status):
+def ending(player_name, end_status):
 
     if end_status == "won":
         print "\nYOU WON SPACE RACE!!"
