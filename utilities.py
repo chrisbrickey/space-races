@@ -1,4 +1,4 @@
-def is_int(self, str):
+def is_int(str):
     try:
         int(str)
         return True
