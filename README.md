@@ -11,7 +11,7 @@ In this object-oriented, multi-file Python game, the user is tasked with saving 
 
 
 ## To run this program
-* From terminal: `python primary.py`
+* From terminal: `python game.py`
 
 
 ## Future Development
