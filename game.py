@@ -53,7 +53,10 @@ class Game (object):
             while selected_planet_name not in planets:
                 selected_planet_name = raw_input("\nThat's not a real planet. Try again: ")
 
-            puzzles(selected_planet_name)
+            print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF PLANET%s -----" % selected_planet_name
+
+            new_puzzle = Puzzle(selected_planet_name)
+            # puzzles(selected_planet_name)
 
             for planet in planet_list:
                 if planet._name == selected_planet_name:
