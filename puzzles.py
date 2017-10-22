@@ -183,7 +183,7 @@ class Puzzle (object):
 
             print "The sum value of your card(s): %s" % player_sum
             print "\nThe dealer's second card is a(n) %s" % blackjack_table[dealer_card2][0]
-            print "So the dealer's sum value is: %s" dealer_sum
+            print "So the dealer's sum value is: %s" % dealer_sum
 
             if puzzle_counter == 2:
 
