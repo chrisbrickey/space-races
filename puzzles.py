@@ -39,6 +39,9 @@ blackjack_table = {
     14: ["ace", 11]
 }
 
+guess_lowerbound = 1
+guess_upperbound = 100
+
 
 class Puzzle (object):
 
@@ -55,6 +58,13 @@ class Puzzle (object):
         else:
             pass
 
+    def is_int(self, str):
+        try:
+            int(str)
+            return True
+        except ValueError:
+            return False
+
 
 
     def play_guess_number(self):
@@ -64,38 +74,42 @@ class Puzzle (object):
             If you don't guess correctly by the tenth chance, the game ends.\n
             """
 
-        secret_number = random.randint(1, 100)
+        secret_number = random.randint(guess_lowerbound, guess_upperbound)
 
         puzzle_counter = 1
-        while puzzle_counter < 10:
-            guess = input("\nType an integer between 1 and 100: ")
+        while puzzle_counter <= 10:
 
-            if puzzle_counter == 9:
+            user_guess = raw_input("\nType an integer between 1 and 100 (inclusive): ")
+            # user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
 
-                print "That was your tenth guess."
+            # print self.is_int(user_guess)
+            # exit()
 
-                if guess == secret_number:
-                    print "You guessed correctly! Coordinates unlocked."
-                    break
-                elif (guess < secret_number):
-                    print "Your last guess was low. GAME OVER"
+            while (self.is_int(user_guess) == False) or (int(user_guess) not in range(guess_lowerbound, (guess_upperbound + 1))):
+                user_guess = raw_input("\nThat's out of range. Type an integer between 1 and 100 (inclusive): ")
+                # user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (guess_lowerbound, guess_upperbound))
+
+            user_guess = int(user_guess)
+
+            if puzzle_counter == 10:
+                if (user_guess < secret_number):
+                    print "That was your tenth and final valid guess. It was too low. GAME OVER"
                     exit()
-                elif (last_guess > secret_number):
-                    print "Your last guess was high. GAME OVER"
+                elif (user_guess > secret_number):
+                    print "That was your tenth and final valid guess. It was too high. GAME OVER"
                     exit()
                 else:
-                    print "invalid entry"
-                    exit()
+                    pass
 
-            elif guess == secret_number:
-                print "You guessed correctly! Coordinates unlocked."
+            elif user_guess == secret_number:
+                print "You guessed correctly! COORDINATES UNLOCKED"
                 break
-            elif (guess < secret_number):
-                print "Your guess is low. Try again!"
-            elif (guess > secret_number):
-                print "Your guess is high. Try again!"
+            elif (user_guess < secret_number):
+                print "Your guess is low. %s guesses remaining. Try again!" % (10 - puzzle_counter)
+            elif (user_guess > secret_number):
+                print "Your guess is high. %s guesses remaining. Try again!" % (10 - puzzle_counter)
             else:
-                print "invalid entry"
+                pass
 
             puzzle_counter += 1
 
@@ -201,7 +215,7 @@ class Puzzle (object):
                     exit()
 
             elif player_sum == 16:
-                print "\nSWEET SIXTEEN! Coordinates unlocked."
+                print "\nYou got a SWEET SIXTEEN! Coordinates unlocked immediately!"
                 break
             elif player_sum > 16:
                 print "\nYou're over 21. BUST!"
