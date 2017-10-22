@@ -57,7 +57,7 @@ class Puzzle (object):
 
 
 
-    def play_guess_number():
+    def play_guess_number(self):
         print """
             The computer will select an integer at random between 1 and 100 (inclusive).\n
             You have 10 chances to guess the number.\n
@@ -100,7 +100,7 @@ class Puzzle (object):
             puzzle_counter += 1
 
 
-    def play_metorite_laser_reflector():
+    def play_metorite_laser_reflector(self):
         print """
             This puzzle works like rock/paper/scissors.\n
             The computer will choose a weapon and you will choose a weapon.\n
@@ -142,7 +142,7 @@ class Puzzle (object):
                 puzzle_counter += 1
 
 
-    def play_deal_me_in():
+    def play_deal_me_in(self):
         print """
             This is similar to blackjack but 16 is the magic number and each draw is random (neglect the odds in a real deck of cards).\n
             \nPoint-cards are taken at face value:'six' = 6 points\n
