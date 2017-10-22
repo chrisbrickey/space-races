@@ -1,4 +1,9 @@
 planets = ["planet1", "planet2", "planet3"]
+# planet_list = [
+#     Planet("planet1", "guess-a-number", 17, 25, 19, 23),
+#     Planet("planet2", "meteorite-laser-reflector", 31, 27, 14, 35),
+#     Planet("planet3", "deal-me-in", 21, 18, 12, 37)
+#     ]
 
 class Planet (object):
 
