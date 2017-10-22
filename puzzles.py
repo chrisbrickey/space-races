@@ -4,10 +4,6 @@ from planets import planets
 
 class Puzzle (object):
 
-    # puzzle_map = { "guess-a-number": ,
-    #                "meteorite-laser-reflector": ,
-    #                "deal-me-in": }
-
     guess_lowerbound = 1
     guess_upperbound = 100
 
