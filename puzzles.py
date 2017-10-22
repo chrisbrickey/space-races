@@ -1,6 +1,12 @@
 import random
+from utilities import is_int
+from game import planets
 
 class Puzzle (object):
+
+    # puzzle_map = { "guess-a-number": ,
+    #                "meteorite-laser-reflector": ,
+    #                "deal-me-in": }
 
     guess_lowerbound = 1
     guess_upperbound = 100
@@ -39,27 +45,19 @@ class Puzzle (object):
     }
 
 
+    def __init__(self, puzzle_name):
+        self.puzzle_name = puzzle_name
 
-    def __init__(self, planet_name):
-        self.planet_name = planet_name
 
-    def choose_puzzle(self):
-        if self.planet_name == "planet1":
+    def run_puzzle(self):
+        if self.puzzle_name == "guess-a-number":
             self.play_guess_number()
-        elif self.planet_name ==  "planet2":
+        elif self.puzzle_name ==  "meteorite-laser-reflector":
             self.play_metorite_laser_reflector()
-        elif self.planet_name == "planet3":
+        elif self.puzzle_name == "deal-me-in":
             self.play_deal_me_in()
         else:
             pass
-
-    def is_int(self, str):
-        try:
-            int(str)
-            return True
-        except ValueError:
-            return False
-
 
 
     def play_guess_number(self):
@@ -75,7 +73,7 @@ class Puzzle (object):
         while puzzle_counter <= 10:
 
             user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (Puzzle.guess_lowerbound, Puzzle.guess_upperbound))
-            while (self.is_int(user_guess) == False) or (int(user_guess) not in range(Puzzle.guess_lowerbound, (Puzzle.guess_upperbound + 1))):
+            while (is_int(user_guess) == False) or (int(user_guess) not in range(Puzzle.guess_lowerbound, (Puzzle.guess_upperbound + 1))):
                 user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (Puzzle.guess_lowerbound, Puzzle.guess_upperbound))
 
             user_guess = int(user_guess)
