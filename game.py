@@ -26,7 +26,8 @@ class Game (object):
             if self.puzzle_attempts == 3:
                 print """
                     You have exhausted your 3 attempts to find coordinates.\n
-                    Please play again.
+                    The time to save humanity is expired.\n
+                    GAME OVER
                     """
                 exit()
             else:
