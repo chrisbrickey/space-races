@@ -1,6 +1,5 @@
-from home import home_start, ending
-from planets import Planet
-from planets import planet_list
+from home import start, end
+from planets import Planet, planet_list
 from puzzles import Puzzle
 
 planets = ["planet1", "planet2", "planet3"]
@@ -20,7 +19,7 @@ class Game (object):
 
 
     def play(self):
-        home_start(self.player_name)
+        start(self.player_name)
 
         while self.trip_counter <= 1:
             trip_output = self.game_map()
@@ -34,16 +33,20 @@ class Game (object):
         else:
             pass
 
-        ending(self.player_name, end_status)
+        end(self.player_name, end_status)
 
 
     #instance methods do not need to be coded above the line where they are called; that is not the case for functions (outside of classes)
     def game_map(self):
+        print "\n%s potential planets have been identified." % (len(planets))
+        print "You only have enough fuel to travel to 1 of those planets, but first you must solve puzzles to get the coordinates of planet."
+
+        coordinate_attempts = []
+
 
         #rewrite so that user can visit 2 planets instead of just one
         if self.trip_counter == 0:
-            print "\n%s potential planets have been identified." % (len(planets))
-            print "You only have enough fuel to travel to 1 of those planets."
+            print "You have attempted %s puzzles. So you can selec"
             print "Below is a list of the planets and the puzzles you have to solve to get the coordinates of each planet.\n"
 
             for index in range(len(planets)):
@@ -55,6 +58,7 @@ class Game (object):
 
             print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
 
+            coordinate_attempts.append(selected_planet_name)
             new_puzzle = Puzzle(selected_planet_name)
             new_puzzle.choose_puzzle()
 
@@ -70,7 +74,7 @@ class Game (object):
             return selected_planet.analyze()
 
         else:
-            return "error with game_map function"
+            pass
 
 
 
