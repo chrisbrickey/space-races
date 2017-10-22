@@ -9,11 +9,14 @@ planet_count = len(planets)
 planet_fuel_cost = 1000
 
 
+starter_fuel_alottment = planet_fuel_cost
+max_coordinate_attempts = 3
+
 class Game (object):
 
     def __init__(self, player_name):
         self.player_name = player_name
-        self.fuel = 1000
+        self.fuel = starter_fuel_alottment
         self.puzzle_attempts = 0
         self.planets_visited = [] # collects indices after a puzzle is solved
 
@@ -21,14 +24,12 @@ class Game (object):
     def play(self):
         start(self.player_name, self.fuel, planet_fuel_cost)
 
-        while self.puzzle_attempts <= 3:
+        while self.puzzle_attempts <= max_coordinate_attempts:
 
-            if self.puzzle_attempts == 3:
-                print """
-                    You have exhausted your 3 attempts to find coordinates.\n
-                    The time to save humanity is expired.\n
-                    GAME OVER
-                    """
+            if self.puzzle_attempts == max_coordinate_attempts:
+                print "\tYou have exhausted your %s attempts to find coordinates." % max_coordinate_attempts
+                print "\tThe time to save humanity is expired.\n"
+                print "\tGAME OVER"
                 exit()
             else:
                 result_status, planet_index = self.get_coordinates()
@@ -56,13 +57,13 @@ class Game (object):
 
     #instance methods do not need to be coded above the line where they are called; that is not the case for functions (outside of classes)
     def get_coordinates(self):
-        print "You have attempted %s puzzle(s). You have %s attempt(s) remaining." % (self.puzzle_attempts, (3 - self.puzzle_attempts))
+        print "You have attempted %s puzzle(s). You have %s attempt(s) remaining." % (self.puzzle_attempts, (max_coordinate_attempts - self.puzzle_attempts))
         print "Below is a list of the planets and the puzzles you must solve to get the coordinates of each planet.\n"
 
         for index in range(planet_count):
             print "%s) %s: %s" % ((index + 1), planets[index], puzzle_list[index])
 
-        selected_number = raw_input("\nType the number of the planet you wish to attempt (1, 2, etc.): ")
+        selected_number = raw_input("\nType the number of the planet you wish to attempt (1, 2, 3, etc.): ")
         while (is_int(selected_number) == False) or (  int(selected_number) not in range(1, (planet_count + 1))):
             selected_number = raw_input("\nThat's out of range. Try again: ")
 
