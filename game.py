@@ -13,7 +13,7 @@ class Game (object):
         self.player_name = player_name
         self.planets_visited = []
         self.trip_counter = 0
-        self.puzzle_count = 0
+        self.puzzle_count = 2
 
 
     def play(self):
@@ -30,6 +30,7 @@ class Game (object):
                 exit()
             else:
                 puzzle_result = self.get_coordinates()
+                print "PUZZLE RESULT: %s" % puzzle_result
                 if puzzle_result == "success":
                     print "im in the success fork===================================="
                     break
@@ -71,7 +72,9 @@ class Game (object):
         print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
 
         new_puzzle = Puzzle(selected_puzzle_name)
-        return new_puzzle.run_puzzle()
+        result = new_puzzle.run_puzzle()
+        print "RESULT: %s" % result
+        return result
 
 
     def travel_to_planet(self):

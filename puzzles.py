@@ -46,14 +46,17 @@ class Puzzle (object):
 
 
     def run_puzzle(self):
+        result = None
         if self.puzzle_name == "guess-a-number":
-            self.play_guess_number()
+            result = self.play_guess_number()
         elif self.puzzle_name ==  "meteorite-laser-reflector":
-            self.play_metorite_laser_reflector()
+            result = self.play_metorite_laser_reflector()
         elif self.puzzle_name == "deal-me-in":
-            self.play_deal_me_in()
+            result = self.play_deal_me_in()
         else:
             pass
+
+        return result
 
 
     def play_guess_number(self):
