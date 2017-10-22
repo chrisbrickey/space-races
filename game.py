@@ -7,6 +7,7 @@ from utilities import is_int
 puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
 planet_count = len(planets)
 planet_fuel_cost = 1000
+planet_score_minimum = 100
 
 
 starter_fuel_alottment = planet_fuel_cost
@@ -45,12 +46,10 @@ class Game (object):
             self.fuel -= planet_fuel_cost
 
         #rewrite so that user can visit 2 planets instead of just one
-        if  int(trip_output) >= 100:
+        if  int(trip_output) >= planet_score_minimum:
             end_status = "won"
-        elif int(trip_output) < 100:
-            end_status = "lost"
         else:
-            pass
+            end_status = "lost"
 
         end(self.player_name, end_status)
 
