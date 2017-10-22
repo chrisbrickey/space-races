@@ -13,14 +13,13 @@ class Game (object):
         self.player_name = player_name
         self.planets_visited = []
         self.trip_counter = 0
-        self.puzzle_count = 2
+        self.puzzle_count = 0
 
 
     def play(self):
         start(self.player_name)
 
         while self.puzzle_count <= 3:
-            print "puzzle_count: %s" % self.puzzle_count
 
             if self.puzzle_count == 3:
                 print """
