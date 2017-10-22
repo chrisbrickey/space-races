@@ -1,3 +1,5 @@
+planets = ["planet1", "planet2", "planet3"]
+
 class Planet (object):
 
     def __init__(self, planet_name, puzzle_name, air, water, soil, inhabitants):

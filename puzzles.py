@@ -1,6 +1,6 @@
 import random
 from utilities import is_int
-from game import planets
+from planets import planets
 
 class Puzzle (object):
 

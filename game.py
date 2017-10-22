@@ -1,9 +1,10 @@
 from home import start, end
-from planets import Planet, planet_list
+from planets import Planet, planet_list, planets
 from puzzles import Puzzle
 
-planets = ["planet1", "planet2", "planet3"]
+
 puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
+planet_count = len(planets)
 #
 # planet_list = [
 #     Planet("planet1", "guess-a-number", 17, 25, 19, 23),
@@ -59,19 +60,23 @@ class Game (object):
     #instance methods do not need to be coded above the line where they are called; that is not the case for functions (outside of classes)
     def get_coordinates(self):
         print "You have attempted %s puzzle(s). You have %s attempt(s) remaining." % (self.puzzle_count, (3 - self.puzzle_count))
-        print "Below is a list of the puzzles you may solve to get the coordinates of each planet.\n"
+        print "Below is a list of the planets and the puzzles you must solve to get the coordinates of each planet.\n"
 
-        for index in range(len(planets)):
-            print "%s: %s" % (puzzle_list[index], planets[index])
+        for index in range(planet_count):
+            print "%s) %s: %s" % ((index + 1), planets[index], puzzle_list[index])
 
-        selected_planet_name = raw_input("\nWhich planet would you like to visit? ")
-        while selected_planet_name not in planets:
-            selected_planet_name = raw_input("\nThat's not a real planet. Try again: ")
+        selected_number = raw_input("\nType the number of the planet you wish to attempt (1, 2, etc.): ")
+        while (is_int(user_guess) == False) or (  int(selected_number) not in range(1, (planet_count + 1))):
+            selected_number = raw_input("\nThat's out of range. Try again: ")
+
+        planet_puzzle_index = int(selected_number) - 1
+        selected_planet_name = planets[planet_puzzle_index]
+        selected_puzzle_name = puzzle_list[planet_puzzle_index]
 
         print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
 
-        new_puzzle = Puzzle(selected_planet_name)
-        return new_puzzle.choose_puzzle()
+        new_puzzle = Puzzle(selected_puzzle_name)
+        return new_puzzle.run_puzzle()
 
 
     def travel_to_planet(self):
