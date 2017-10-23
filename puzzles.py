@@ -12,12 +12,15 @@ class PuzzleSelector (object):
         result = None
         if self.puzzle_name == "guess-a-number":
             new_puzzle = GuessNumberPuzzle()
+            new_puzzle.print_intro()
             result = new_puzzle.play_guess_number()
         elif self.puzzle_name ==  "meteorite-laser-reflector":
             new_puzzle = MLRPuzzle()
+            new_puzzle.print_intro()
             result = new_puzzle.play_metorite_laser_reflector()
         elif self.puzzle_name == "deal-me-in":
             new_puzzle = BlackjackPuzzle()
+            new_puzzle.print_intro()
             result = new_puzzle.play_deal_me_in()
         else:
             pass
@@ -29,13 +32,14 @@ class GuessNumberPuzzle (object):
 
     bounds = [1, 100]
 
-    def play_guess_number(self):
+    def print_intro(self):
         print """
             The computer will select an integer at random between 1 and 100 (inclusive).\n
             You have 10 chances to guess the number.\n
             If you don't guess correctly by the tenth chance, the game ends.\n
             """
 
+    def play_guess_number(self):
         secret_number = random.randint(*GuessNumberPuzzle.bounds)
 
         puzzle_counter = 1
@@ -87,7 +91,7 @@ class MLRPuzzle (object):
         "rr": "It's a DRAW"
     }
 
-    def play_metorite_laser_reflector(self):
+    def print_intro(self):
         print """
             This puzzle works like rock/paper/scissors.\n
             The computer will choose a weapon and you will choose a weapon.\n
@@ -95,6 +99,7 @@ class MLRPuzzle (object):
             You only get three chances. If you don't win by the third chance, the game ends.\n
             """
 
+    def play_metorite_laser_reflector(self):
         puzzle_counter = 0
         while puzzle_counter < 3:
 
@@ -145,7 +150,7 @@ class BlackjackPuzzle (object):
     def draw_random_card(self):
         return random.randint(*BlackjackPuzzle.bounds)
 
-    def play_deal_me_in(self):
+    def print_intro(self):
         print """
             This puzzle is similar to blackjack with many exceptions:\n
             \t* 16 is the magic number. When your cards sum to 16,YOU automatically win. Exceeding 16 is BUST.\n
@@ -166,6 +171,8 @@ class BlackjackPuzzle (object):
             \t* You must win one of the three rounds to unlock this planet's coordinates.\n\n
             """
 
+
+    def play_deal_me_in(self):
         puzzle_counter = 0
         while puzzle_counter < 3:
 
