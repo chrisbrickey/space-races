@@ -12,13 +12,13 @@ class Puzzle (object):
     #read this like....Does meteorite beat laser?...No, YOU LOSE
     mlr_outcome_table = {
         "mm": "DRAW",
-        "ml": "Laser destroys meteorite. YOU LOSE.",
-        "mr": "Meteorite crushes reflector. YOU WIN! Coordinates unlocked.",
-        "lm": "Laser destroys meteorite. YOU WIN! Coordinates unlocked.",
+        "ml": "Laser destroys meteorite. \nYOU LOSE.\n\n",
+        "mr": "Meteorite crushes reflector. YOU WIN! Coordinates unlocked.\n\n",
+        "lm": "Laser destroys meteorite. YOU WIN! Coordinates unlocked.\n\n",
         "ll": "DRAW",
-        "lr": "Reflector deflects laser. YOU LOSE.",
-        "rm": "Meteorite crushes reflector. YOU LOSE.",
-        "rl": "Reflector deflects laser. YOU WIN! Coordinates unlocked.",
+        "lr": "Reflector deflects laser. YOU LOSE.\n\n",
+        "rm": "Meteorite crushes reflector. YOU LOSE.\n\n",
+        "rl": "Reflector deflects laser. YOU WIN! Coordinates unlocked.\n\n",
         "rr": "DRAW"
     }
 
@@ -119,9 +119,10 @@ class Puzzle (object):
             while user_choice not in Puzzle.mlr_choices:
                 user_choice = raw_input("\nThat's not a meteorite, laser, or reflector. Try again: ")
 
-            print "\n\nThe computer chose: %s" % computer_choice
+            print "\nYou chose: %s" % user_choice
+            print "Computer chose: %s" % computer_choice
             matchup = user_choice.split()[0][0] + computer_choice.split()[0][0]
-            print "\n %s" % Puzzle.mlr_outcome_table[matchup]
+            print "\n%s\n" % Puzzle.mlr_outcome_table[matchup]
 
             if puzzle_counter == 2:
                 print "\n\nThat was your third and last chance.\n\n"
