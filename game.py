@@ -1,4 +1,4 @@
-from puzzles import Puzzle
+from puzzles import PuzzleSelector
 from planets import Planet
 from utilities import is_int, end_game
 
@@ -84,8 +84,8 @@ class Game (object):
         print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
 
         # Next steps:  use index instead of puzzle name to choose and play puzzle
-        new_puzzle = Puzzle(selected_puzzle_name)
-        result = new_puzzle.run_puzzle()
+        puzzle_selector_object = PuzzleSelector(selected_puzzle_name)
+        result = puzzle_selector_object.initiate_puzzle()
         return [result, planet_puzzle_index]
 
 
