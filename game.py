@@ -1,4 +1,3 @@
-# from home import start, end
 from puzzles import Puzzle
 from planets import Planet
 from utilities import is_int, end_game
