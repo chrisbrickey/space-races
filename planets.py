@@ -1,11 +1,3 @@
-# Next steps: move this inside Planet Class
-planet_attributes = {
-    0 : ["planet1", 17, 25, 19, 23], # sum = 84
-    1 : ["planet2", 31, 27, 14, 35], # sum = 107
-    2 : ["planet3", 21, 18, 12, 37] # sum = 88
-    }
-
-
 class Planet (object):
 
     def __init__(self, planet_name, air, water, soil, inhabitants):

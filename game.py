@@ -1,17 +1,23 @@
 from home import start, end
-from planets import Planet, planet_attributes
 from puzzles import Puzzle
+from planets import Planet
 from utilities import is_int
 
 # Next steps: move these variables to respective files and classes
 puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
-planet_count = len(planet_attributes)
+
 planet_fuel_cost = 1000
 
 # Next steps: move these variables inside Game class
 min_to_sustain_human_life = 100
 starter_fuel_alottment = planet_fuel_cost
 max_coordinate_attempts = 3
+planet_attributes = {
+    0 : ["planet1", 17, 25, 19, 23], # sum = 84
+    1 : ["planet2", 31, 27, 14, 35], # sum = 107
+    2 : ["planet3", 21, 18, 12, 37] # sum = 88
+    }
+planet_count = len(planet_attributes)
 
 class Game (object):
 
@@ -23,7 +29,7 @@ class Game (object):
 
 
     def play(self):
-        start(self.player_name, self.fuel, planet_fuel_cost)
+        start(self.player_name, self.fuel, planet_count, planet_fuel_cost)
 
         while self.puzzle_attempts <= max_coordinate_attempts:
 
