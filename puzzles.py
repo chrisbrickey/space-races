@@ -2,10 +2,53 @@
 import random
 from utilities import is_int
 
-class Puzzle (object):
+class GuessNumberPuzzle (object):
 
-    guess_lowerbound = 1
-    guess_upperbound = 100
+    bounds = [1, 100]
+
+    def play_guess_number(self):
+        print """
+            The computer will select an integer at random between 1 and 100 (inclusive).\n
+            You have 10 chances to guess the number.\n
+            If you don't guess correctly by the tenth chance, the game ends.\n
+            """
+
+        secret_number = random.randint(*GuessNumberPuzzle.bounds)
+
+        puzzle_counter = 1
+        while puzzle_counter <= 10:
+
+            user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (GuessNumberPuzzle.bounds[0], GuessNumberPuzzle.bounds[1]))
+            while (is_int(user_guess) == False) or (int(user_guess) not in range (GuessNumberPuzzle.bounds[0], (GuessNumberPuzzle.bounds[1] + 1))):
+                user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (GuessNumberPuzzle.bounds[0], GuessNumberPuzzle.bounds[1]))
+
+            user_guess = int(user_guess)
+
+            if puzzle_counter == 10:
+                if (user_guess < secret_number):
+                    print "That was your tenth and final valid guess. It was too low.\n\n"
+                    return "not success"
+                elif (user_guess > secret_number):
+                    print "That was your tenth and final valid guess. It was too high.\n\n"
+                    return "not success"
+                else:
+                    pass
+
+            elif user_guess == secret_number:
+                print "You guessed correctly! COORDINATES UNLOCKED\n\n"
+                return "success"
+            elif (user_guess < secret_number):
+                print "Your guess is low. %s guesses remaining. Try again!" % (10 - puzzle_counter)
+            elif (user_guess > secret_number):
+                print "Your guess is high. %s guesses remaining. Try again!" % (10 - puzzle_counter)
+            else:
+                pass
+
+            puzzle_counter += 1
+
+
+
+class Puzzle (object):
 
     mlr_choices = ["meteorite", "laser", "reflector"]
 
@@ -48,7 +91,8 @@ class Puzzle (object):
     def run_puzzle(self):
         result = None
         if self.puzzle_name == "guess-a-number":
-            result = self.play_guess_number()
+            new_puzzle = GuessNumberPuzzle()
+            result = new_puzzle.play_guess_number()
         elif self.puzzle_name ==  "meteorite-laser-reflector":
             result = self.play_metorite_laser_reflector()
         elif self.puzzle_name == "deal-me-in":
@@ -57,47 +101,6 @@ class Puzzle (object):
             pass
 
         return result
-
-
-    def play_guess_number(self):
-        print """
-            The computer will select an integer at random between 1 and 100 (inclusive).\n
-            You have 10 chances to guess the number.\n
-            If you don't guess correctly by the tenth chance, the game ends.\n
-            """
-
-        secret_number = random.randint(Puzzle.guess_lowerbound, Puzzle.guess_upperbound)
-
-        puzzle_counter = 1
-        while puzzle_counter <= 10:
-
-            user_guess = raw_input("\nType an integer between %s and %s (inclusive): " % (Puzzle.guess_lowerbound, Puzzle.guess_upperbound))
-            while (is_int(user_guess) == False) or (int(user_guess) not in range(Puzzle.guess_lowerbound, (Puzzle.guess_upperbound + 1))):
-                user_guess = raw_input("\nThat's out of range. Type an integer between %s and %s (inclusive): " % (Puzzle.guess_lowerbound, Puzzle.guess_upperbound))
-
-            user_guess = int(user_guess)
-
-            if puzzle_counter == 10:
-                if (user_guess < secret_number):
-                    print "That was your tenth and final valid guess. It was too low.\n\n"
-                    return "not success"
-                elif (user_guess > secret_number):
-                    print "That was your tenth and final valid guess. It was too high.\n\n"
-                    return "not success"
-                else:
-                    pass
-
-            elif user_guess == secret_number:
-                print "You guessed correctly! COORDINATES UNLOCKED\n\n"
-                return "success"
-            elif (user_guess < secret_number):
-                print "Your guess is low. %s guesses remaining. Try again!" % (10 - puzzle_counter)
-            elif (user_guess > secret_number):
-                print "Your guess is high. %s guesses remaining. Try again!" % (10 - puzzle_counter)
-            else:
-                pass
-
-            puzzle_counter += 1
 
 
     def play_metorite_laser_reflector(self):
