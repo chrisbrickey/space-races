@@ -19,9 +19,4 @@ def end(player_name, end_status):
         print "You must return to your home planet to refuel before playing again.\n"
         exit()
     else:
-        print "%s" % end_status
-        exit()
-
-if __name__ == "__main__":
-    start("Hannah")
-    end("Joe", "end status: just testing")
+        pass
