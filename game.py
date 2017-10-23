@@ -9,7 +9,6 @@ class Game (object):
     starter_fuel_alottment = planet_fuel_cost
     max_coordinate_attempts = 3
 
-    # puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
     # keys = indices; values = [data required for building planet, puzzle required to get coordinates for that planet]
     planet_attributes = {
         0 : [["planet1", 17, 25, 19, 23], "guess-a-number"], # sum = 84
