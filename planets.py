@@ -17,7 +17,6 @@ class Planet (object):
 
 
     def travel (self):
-        #print "Puzzles are not yet loaded so we assume you passed the quiz for " + str(self._name) + "."
         print "\nGreat job! The coordinates for " + str(self._name) + " are being loaded to your ship."
         print "Hang on! You're about to travel at warp speed to " + str(self._name) + "."
         print "\n\t----- a few hours later -----\n"
@@ -26,29 +25,23 @@ class Planet (object):
 
 
     def test(self):
-
         authorization = raw_input("\nInitialize tests by typing GO here: ")
+        while authorization not in ["GO", "go", "Go", "gO"]:
+            authorization = raw_input("\nThat doesn't make sense. Please type 'GO': ")
 
-        if authorization == "GO":
-            print "\nTest results for " + str(self._name) + "..."
-            print "Air Quality: " + str(self._air)
-            print "Water Quality: " + str(self._water)
-            print "Soil Nutrients: " + str(self._soil)
-            print "Inhabitant Friendliness: " + str(self._inhabitants)
-        else:
-            print "Authorization Error: Please make sure you typed GO."
+        print "\nTest results for " + str(self._name) + "..."
+        print "Air Quality: " + str(self._air)
+        print "Water Quality: " + str(self._water)
+        print "Soil Nutrients: " + str(self._soil)
+        print "Inhabitant Friendliness: " + str(self._inhabitants)
 
 
     def analyze(self):
-
         print "\nIn order for the planet to be suitable for humans, the sum of these scores must be at least 100."
         authorization2 = raw_input("\nInterpret the results by typing GO here: ")
+        while authorization2 not in ["GO", "go", "Go", "gO"]:
+            authorization2 = raw_input("\nThat doesn't make sense. Please type 'GO': ")
 
-        if authorization2 == "GO":
-            sum_of_results = self._air + self._water + self._soil + self._inhabitants
-            print "\nThe sum is: " + str(sum_of_results)
-        else:
-            sum_of_results = "N/A"
-            print "\nAuthorization Error: Please make sure you typed GO."
-
+        sum_of_results = self._air + self._water + self._soil + self._inhabitants
+        print "\nThe sum is: " + str(sum_of_results)
         return sum_of_results
