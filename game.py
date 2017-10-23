@@ -9,11 +9,12 @@ class Game (object):
     starter_fuel_alottment = planet_fuel_cost
     max_coordinate_attempts = 3
 
-    puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
+    # puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
+    # keys = indices; values = [data required for building planet, puzzle required to get coordinates for that planet]
     planet_attributes = {
-        0 : ["planet1", 17, 25, 19, 23], # sum = 84
-        1 : ["planet2", 31, 27, 14, 35], # sum = 107
-        2 : ["planet3", 21, 18, 12, 37] # sum = 88
+        0 : [["planet1", 17, 25, 19, 23], "guess-a-number"], # sum = 84
+        1 : [["planet2", 31, 27, 14, 35], "meteorite-laser-reflector"], # sum = 107
+        2 : [["planet3", 21, 18, 12, 37], "deal-me-in"] # sum = 88
         }
 
     planet_count = len(planet_attributes)
@@ -71,15 +72,15 @@ class Game (object):
         print "Below is a list of the planets and the puzzles you must solve to get the coordinates of each planet.\n"
 
         for index in range(Game.planet_count):
-            print "%s) %s: %s" % ((index + 1), Game.planet_attributes[index][0], Game.puzzle_list[index])
+            print "%s) %s: %s" % ((index + 1), Game.planet_attributes[index][0][0], Game.planet_attributes[index][1])
 
         selected_number = raw_input("\nType the number of the planet you wish to attempt (1, 2, 3, etc.): ")
         while (is_int(selected_number) == False) or (  int(selected_number) not in range(1, (Game.planet_count + 1))):
             selected_number = raw_input("\nThat's out of range. Try again: ")
 
         planet_puzzle_index = int(selected_number) - 1
-        selected_planet_name = Game.planet_attributes[planet_puzzle_index][0]
-        selected_puzzle_name = Game.puzzle_list[planet_puzzle_index]
+        selected_planet_name = Game.planet_attributes[planet_puzzle_index][0][0]
+        selected_puzzle_name = Game.planet_attributes[planet_puzzle_index][1]
 
         print "\n\t----- INSTRUCTIONS TO UNLOCK COORDINATES OF %s -----" % selected_planet_name.upper()
 
@@ -90,7 +91,7 @@ class Game (object):
 
 
     def travel_to_planet(self, planet_index):
-        array_of_planet_attributes = Game.planet_attributes[planet_index]
+        array_of_planet_attributes = Game.planet_attributes[planet_index][0]
         selected_planet = Planet(*array_of_planet_attributes)
 
         selected_planet.travel()
