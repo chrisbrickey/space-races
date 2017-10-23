@@ -1,23 +1,22 @@
-from home import start, end
+# from home import start, end
 from puzzles import Puzzle
 from planets import Planet
-from utilities import is_int
+from utilities import is_int, end_game
 
-# Next steps: move these variables to respective files and classes
-puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
-
-planet_fuel_cost = 1000
 
 # Next steps: move these variables inside Game class
 min_to_sustain_human_life = 100
+planet_fuel_cost = 1000
 starter_fuel_alottment = planet_fuel_cost
 max_coordinate_attempts = 3
+puzzle_list = ["guess-a-number", "meteorite-laser-reflector", "deal-me-in"]
 planet_attributes = {
     0 : ["planet1", 17, 25, 19, 23], # sum = 84
     1 : ["planet2", 31, 27, 14, 35], # sum = 107
     2 : ["planet3", 21, 18, 12, 37] # sum = 88
     }
 planet_count = len(planet_attributes)
+
 
 class Game (object):
 
@@ -28,9 +27,16 @@ class Game (object):
         self.planets_visited = [] # collects indices after a puzzle is solved
 
 
-    def play(self):
-        start(self.player_name, self.fuel, planet_count, planet_fuel_cost)
+    def greeting(self):
+        print "\nWelcome to Space Race, %s!" % self.player_name
+        print "Earth's environment is quickly deteriorating."
+        print "Your mission is to find a planet that is suitable for relocation of friendly humans.\n"
+        print "Our team identified %s potential planets for human habitation." % (planet_count)
+        print "You have %s units of fuel. That is only enough to travel to %s of those planets.\n" % (self.fuel, (self.fuel / planet_fuel_cost))
+        print "AND BEFORE YOU CAN TRAVEL, you must solve puzzles to get the coordinates of any planet.\n\n"
 
+
+    def play(self):
         while self.puzzle_attempts <= max_coordinate_attempts:
 
             if self.puzzle_attempts == max_coordinate_attempts:
@@ -52,12 +58,13 @@ class Game (object):
             self.fuel -= planet_fuel_cost
 
         #rewrite so that user can visit 2 planets instead of just one
+        # end_status = None
         if  int(trip_output) >= min_to_sustain_human_life:
             end_status = "won"
         else:
             end_status = "lost"
 
-        end(self.player_name, end_status)
+        end_game(self.player_name, end_status)
 
 
     #instance methods do not need to be coded above the line where they are called; that is not the case for functions (outside of classes)
@@ -98,4 +105,5 @@ class Game (object):
 if __name__ == "__main__":
     player_name = raw_input("What's your name? ")
     game = Game(player_name)
+    game.greeting()
     game.play()
