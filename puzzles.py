@@ -1,6 +1,8 @@
-# Next steps:  Break into classes: PuzzleSelector, GuessNumber, MLR, DealMeIn.  The last three will have play methods
+# Next steps:  Break out intro printing into separate methods
+
 import random
 from utilities import is_int
+
 
 class GuessNumberPuzzle (object):
 
@@ -47,23 +49,59 @@ class GuessNumberPuzzle (object):
             puzzle_counter += 1
 
 
-
-class Puzzle (object):
+class MLRPuzzle (object):
 
     mlr_choices = ["meteorite", "laser", "reflector"]
 
     #read this like....Does meteorite beat laser?...No, YOU LOSE
     mlr_outcome_table = {
-        "mm": "DRAW",
+        "mm": "It's a DRAW",
         "ml": "Laser destroys meteorite. \nYOU LOSE.\n\n",
-        "mr": "Meteorite crushes reflector. YOU WIN! Coordinates unlocked.\n\n",
-        "lm": "Laser destroys meteorite. YOU WIN! Coordinates unlocked.\n\n",
-        "ll": "DRAW",
-        "lr": "Reflector deflects laser. YOU LOSE.\n\n",
-        "rm": "Meteorite crushes reflector. YOU LOSE.\n\n",
-        "rl": "Reflector deflects laser. YOU WIN! Coordinates unlocked.\n\n",
-        "rr": "DRAW"
+        "mr": "Meteorite crushes reflector. \nYOU WIN! Coordinates unlocked.\n\n",
+        "lm": "Laser destroys meteorite. \nYOU WIN! Coordinates unlocked.\n\n",
+        "ll": "It's a DRAW",
+        "lr": "Reflector deflects laser. \nYOU LOSE.\n\n",
+        "rm": "Meteorite crushes reflector. \nYOU LOSE.\n\n",
+        "rl": "Reflector deflects laser. \nYOU WIN! Coordinates unlocked.\n\n",
+        "rr": "It's a DRAW"
     }
+
+    def play_metorite_laser_reflector(self):
+        print """
+            This puzzle works like rock/paper/scissors.\n
+            The computer will choose a weapon and you will choose a weapon.\n
+            If your weapon beats the computer's weapon, you win.\n
+            You only get three chances. If you don't win by the third chance, the game ends.\n
+            """
+
+        puzzle_counter = 0
+        while puzzle_counter < 3:
+
+            print "\n\t----- Playing round %d of %d -----" % ((puzzle_counter + 1), len(MLRPuzzle.mlr_choices))
+
+            computer_choice = MLRPuzzle.mlr_choices[random.randint(0, (len(MLRPuzzle.mlr_choices) - 1))]
+
+            user_choice = raw_input("\nSelect your weapon by typing 'meteorite', 'laser', or 'reflector': ")
+            while user_choice not in MLRPuzzle.mlr_choices:
+                user_choice = raw_input("\nThat's not a meteorite, laser, or reflector. Try again: ")
+
+            print "\nYou chose: %s" % user_choice
+            print "Computer chose: %s" % computer_choice
+            matchup = user_choice.split()[0][0] + computer_choice.split()[0][0]
+            print "\n%s\n" % MLRPuzzle.mlr_outcome_table[matchup]
+
+            if (matchup == "lm") or (matchup == "rl") or (matchup == "mr"):
+                return "success"
+            else:
+                if puzzle_counter == 2:
+                    print "\nThat was the third round - your last chance within this puzzle.\n\n"
+                    return "not success"
+                else:
+                    puzzle_counter += 1
+
+
+
+class Puzzle (object):
 
     #keys = numeric representation; values = [name of card, point value]
     blackjack_table = {
@@ -94,55 +132,14 @@ class Puzzle (object):
             new_puzzle = GuessNumberPuzzle()
             result = new_puzzle.play_guess_number()
         elif self.puzzle_name ==  "meteorite-laser-reflector":
-            result = self.play_metorite_laser_reflector()
+            new_puzzle = MLRPuzzle()
+            result = new_puzzle.play_metorite_laser_reflector()
         elif self.puzzle_name == "deal-me-in":
             result = self.play_deal_me_in()
         else:
             pass
 
         return result
-
-
-    def play_metorite_laser_reflector(self):
-        print """
-            This puzzle works like rock/paper/scissors.\n
-            The computer will choose a weapon and you will choose a weapon.\n
-            If your weapon beats the computer's weapon, you win.\n
-            You only get three chances. If you don't win by the third chance, the game ends.\n
-            """
-
-        puzzle_counter = 0
-        while puzzle_counter < 3:
-
-            print "\n\t----- Playing round # %d -----" % (puzzle_counter + 1)
-
-            computer_choice = Puzzle.mlr_choices[random.randint(0, (len(Puzzle.mlr_choices) - 1))]
-
-            user_choice = raw_input("\nSelect your weapon by typing 'meteorite', 'laser', or 'reflector': ")
-            while user_choice not in Puzzle.mlr_choices:
-                user_choice = raw_input("\nThat's not a meteorite, laser, or reflector. Try again: ")
-
-            print "\nYou chose: %s" % user_choice
-            print "Computer chose: %s" % computer_choice
-            matchup = user_choice.split()[0][0] + computer_choice.split()[0][0]
-            print "\n%s\n" % Puzzle.mlr_outcome_table[matchup]
-
-            if puzzle_counter == 2:
-                print "\n\nThat was your third and last chance.\n\n"
-
-                if user_choice == computer_choice:
-                    return "not success"
-                elif (matchup == "ml") or (matchup == "lr") or (matchup == "rm"):
-                    return "not success"
-                else:
-                    return "success"
-
-            elif (matchup == "lm") or (matchup == "rl") or (matchup == "mr"):
-                return "success"
-            #elif user_choice == computer_choice:
-            #elif (matchup == "ml") or (matchup == "lr") or (matchup == "rm"):
-            else:
-                puzzle_counter += 1
 
 
     def play_deal_me_in(self):
