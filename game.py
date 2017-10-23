@@ -85,7 +85,7 @@ class Game (object):
 
         # Next steps:  use index instead of puzzle name to choose and play puzzle
         puzzle_selector_object = PuzzleSelector(selected_puzzle_name)
-        result = puzzle_selector_object.initiate_puzzle()
+        result = puzzle_selector_object.run_puzzle()
         return [result, planet_puzzle_index]
 
 

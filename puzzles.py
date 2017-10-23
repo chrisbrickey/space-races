@@ -1,5 +1,3 @@
-# Next steps:  Break out intro printing into separate methods. Each class has two methods: greeting and play
-
 import random
 from utilities import is_int
 
@@ -8,23 +6,19 @@ class PuzzleSelector (object):
     def __init__(self, puzzle_name):
         self.puzzle_name = puzzle_name
 
-    def initiate_puzzle(self):
-        result = None
+    def run_puzzle(self):
+
         if self.puzzle_name == "guess-a-number":
             new_puzzle = GuessNumberPuzzle()
-            new_puzzle.print_intro()
-            result = new_puzzle.play_guess_number()
         elif self.puzzle_name ==  "meteorite-laser-reflector":
             new_puzzle = MLRPuzzle()
-            new_puzzle.print_intro()
-            result = new_puzzle.play_metorite_laser_reflector()
         elif self.puzzle_name == "deal-me-in":
             new_puzzle = BlackjackPuzzle()
-            new_puzzle.print_intro()
-            result = new_puzzle.play_deal_me_in()
         else:
             pass
 
+        new_puzzle.print_intro()
+        result = new_puzzle.play()
         return result
 
 
@@ -39,7 +33,7 @@ class GuessNumberPuzzle (object):
             If you don't guess correctly by the tenth chance, the game ends.\n
             """
 
-    def play_guess_number(self):
+    def play(self):
         secret_number = random.randint(*GuessNumberPuzzle.bounds)
 
         puzzle_counter = 1
@@ -99,7 +93,7 @@ class MLRPuzzle (object):
             You only get three chances. If you don't win by the third chance, the game ends.\n
             """
 
-    def play_metorite_laser_reflector(self):
+    def play(self):
         puzzle_counter = 0
         while puzzle_counter < 3:
 
@@ -172,7 +166,7 @@ class BlackjackPuzzle (object):
             """
 
 
-    def play_deal_me_in(self):
+    def play(self):
         puzzle_counter = 0
         while puzzle_counter < 3:
 
