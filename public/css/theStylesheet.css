@@ -78,13 +78,48 @@ body {
 
 #outershell {
     background-color: yellow;
-    display: flex;
     padding: 10px;
+    margin: 10px;
+
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+ }
+
+#header {
+    background-color: lightgreen;
+    padding: 10px;
+    margin: 10px;
+
+    height: 100px;
+    width: 100%;
+}
+
+#midshell {
+    background-color: mediumpurple;
+    padding: 10px;
+    margin: 10px;
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
  }
 
 #innershell {
     background-color: pink;
     padding: 10px;
+    margin: 10px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
  }
 
 
