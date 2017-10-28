@@ -70,19 +70,22 @@ table {
 /*=============================NON RESET=============================*/
 body {
   font-family: 'Space Mono', monospace;
-    /*font-family: 'Orbitron', sans-serif; */
+    /*font-family: 'Orbitron', sans-serif;*/
     /*font-family: 'Press Start 2P', cursive;*/
   /*font-family: 'Baloo Bhaijaan', cursive;*/
   /*font-family: 'Faster One', cursive;*/
  }
 
 #outershell {
-    background-color: yellow;
-    padding: 10px;
-    margin: 10px;
+    /*background-color: yellow;*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
 
     height: 100vh;
     width: 100vw;
+    background-image: url('https://res.cloudinary.com/dckkkjkuz/image/upload/v1509228696/space-races/blue_space.jpg');
+    background-size: cover;
+
     display: flex;
     flex-direction: column;
     /*justify-content: center;*/
@@ -90,16 +93,26 @@ body {
  }
 
 #header {
-    background-color: lightgreen;
+    /*background-color: orange;*/
     padding: 10px;
     margin: 10px;
 
-    height: 100px;
-    width: 100%;
+    /*height: 50px;*/
+    width: 95%;
+
+    font-family: 'Faster One', cursive;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+
+    display: flex;
+    /*flex-direction: column;*/
+    /*justify-content: center;*/
+    align-items: center;
 }
 
 #midshell {
-    background-color: mediumpurple;
+    /*background-color: mediumpurple;*/
     padding: 10px;
     margin: 10px;
 
