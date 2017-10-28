@@ -1,5 +1,5 @@
 # Space Races
-[Space Races](http://www.space-races.com/) is a mobile-first web app game based on object-oriented Python. 
+[Space Races](http://www.space-races.com/) is a mobile-first web app game based on object-oriented Python.
 
 The user is tasked with saving humanity on Earth by finding another suitable planet.  It requires puzzle-solving in a choose-your-own-adventure style.
 
@@ -22,7 +22,7 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 
 
 #### Unlocking Planet 1 Coordinates
-![SelectPlanet1](https://res.cloudinary.com/dckkkjkuz/image/upload/v1509155640/space-races/UnlockPlanet1.png)
+![SelectPlanet1](https://res.cloudinary.com/dckkkjkuz/image/upload/c_scale,w_400/v1509161143/space-races/UnlockPlanet1.png)
 
 
 #### Unlocking Planet 3 Coordinates
