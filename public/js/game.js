@@ -1,2 +1,2 @@
-const root = document.getElementsByClassName("innershell");
-// root.innerHTML = "I'm Javascript"
+const root = document.getElementById("innershell");
+root.innerHTML = "I'm Javascript";
