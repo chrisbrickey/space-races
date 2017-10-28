@@ -76,13 +76,13 @@ body {
   /*font-family: 'Faster One', cursive;*/
  }
 
-.outershell {
+#outershell {
     background-color: yellow;
     display: flex;
     padding: 10px;
  }
 
-.innershell {
+#innershell {
     background-color: pink;
     padding: 10px;
  }
