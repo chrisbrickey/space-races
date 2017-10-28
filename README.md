@@ -18,7 +18,7 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 ## Wireframe Samples
 
 #### Selecting a Planet
-![UnlockCoordinates](https://res.cloudinary.com/dckkkjkuz/image/upload/v1509154912/space-races/SelectPuzzle.png)
+![UnlockCoordinates](https://res.cloudinary.com/dckkkjkuz/image/upload/c_scale,w_400/v1509154912/space-races/SelectPuzzle.png)
 
 
 #### Unlocking Planet 1 Coordinates
@@ -26,7 +26,7 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 
 
 #### Unlocking Planet 3 Coordinates
-![SelectPlanet3](https://res.cloudinary.com/dckkkjkuz/image/upload/v1509154921/space-races/UnlockPlanet3.png)
+![SelectPlanet3](https://res.cloudinary.com/dckkkjkuz/image/upload/c_scale,w_400/v1509154921/space-races/UnlockPlanet3.png)
 
 
 See [development documents][docs] for all wireframes
