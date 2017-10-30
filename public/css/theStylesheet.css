@@ -106,8 +106,6 @@ body {
     font-weight: bold;
 
     display: flex;
-    /*flex-direction: column;*/
-    /*justify-content: center;*/
     align-items: center;
 }
 
@@ -137,13 +135,31 @@ body {
     align-items: left;
  }
 
-.landingText {
-    /*background-color: brown;*/
+.landingDiv {
+    /*background-color: aqua;*/
     padding: 10px;
     margin: 10px;
+}
+
+
+.landingText {
+    /*background-color: green;*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
 
     color: white;
-    font-size: 2em;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    line-height: 120%;
+    float: left;
+}
+
+#githubLink {
+    /*background-color: lightgreen;*/
+    text-decoration: underline;
+    font-style: italic;
+    /*color: white;*/
+
 }
 
 
