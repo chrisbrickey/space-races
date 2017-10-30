@@ -120,20 +120,32 @@ body {
     width: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: top;
     align-items: center;
  }
 
 #innershell {
-    background-color: pink;
+    /*background-color: pink;*/
     padding: 10px;
     margin: 10px;
 
+    width: 50%;
+    color: white;
+
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    align-items: left;
  }
+
+.landingText {
+    /*background-color: brown;*/
+    padding: 10px;
+    margin: 10px;
+
+    color: white;
+    font-size: 2em;
+}
+
 
 
 
