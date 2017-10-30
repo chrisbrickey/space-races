@@ -16,13 +16,13 @@ root.appendChild(innerDiv2);
 
 var p2 = document.createElement('div');
 p2.className += "landingText";
-p2.innerHTML += "Play the game from the command line by downloading the files here: ";
+p2.innerHTML += "To play from the command line, download files from my github: ";
 
 var aTag = document.createElement('a');
 aTag.className += "landingText";
 aTag.setAttribute("href","https://github.com/chrisbrickey/space-race-game");
-aTag.setAttribute("id","githubLink");
-aTag.innerHTML += "space races on github";
+aTag.setAttribute("id","linkButton");
+aTag.innerHTML += "Download command line version";
 
 
 innerDiv2.appendChild(p2);
