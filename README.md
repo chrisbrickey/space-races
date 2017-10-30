@@ -5,8 +5,8 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 
 
 ## Technology & Dependencies
-* Python 2.7
-* Javascript
+* For command line version: Python 2.7
+* For web version: Javascript
 
 
 ## To run this program
@@ -35,5 +35,4 @@ See [development documents][docs] for all wireframes
 
 
 ## Future Development
-* Build out frontend in vanilla JavaScript
-* Host with custom domain name
+* Build out frontend in vanilla JavaScript so users can play the game on the web

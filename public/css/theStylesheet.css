@@ -70,22 +70,111 @@ table {
 /*=============================NON RESET=============================*/
 body {
   font-family: 'Space Mono', monospace;
-    /*font-family: 'Orbitron', sans-serif; */
+    /*font-family: 'Orbitron', sans-serif;*/
     /*font-family: 'Press Start 2P', cursive;*/
   /*font-family: 'Baloo Bhaijaan', cursive;*/
   /*font-family: 'Faster One', cursive;*/
  }
 
 #outershell {
-    background-color: yellow;
+    /*background-color: yellow;*/
+    /*padding: 10px;*/
+    /*margin: 10px;*/
+
+    height: 100vh;
+    width: 100vw;
+    background-image: url('https://res.cloudinary.com/dckkkjkuz/image/upload/v1509228696/space-races/blue_space.jpg');
+    background-size: cover;
+
     display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+ }
+
+#header {
+    /*background-color: orange;*/
     padding: 10px;
+    margin: 10px;
+
+    /*height: 50px;*/
+    width: 95%;
+
+    font-family: 'Faster One', cursive;
+    color: white;
+    font-size: 50px;
+    font-weight: bold;
+
+    display: flex;
+    align-items: center;
+}
+
+#midshell {
+    /*background-color: mediumpurple;*/
+    padding: 10px;
+    margin: 10px;
+
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: top;
+    align-items: center;
  }
 
 #innershell {
-    background-color: pink;
+    /*background-color: pink;*/
     padding: 10px;
+    margin: 70px 10px 10px 10px;
+
+    width: 50%;
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: left;
  }
+
+.landingDiv {
+    /*background-color: aqua;*/
+    padding: 10px;
+    margin: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.landingText {
+    /*background-color: green;*/
+    padding: 10px;
+    margin: 10px;
+
+    color: white;
+    text-align: center;
+    font-size: 1.2em;
+    letter-spacing: 2px;
+    line-height: 120%;
+}
+
+#linkButton {
+    margin: 0px 10px 10px 10px;
+    padding: 10px 20px 10px 20px;
+
+
+    background-color: white;
+    border-radius: 20px;
+
+    color: grey;
+    font-style: italic;
+
+    cursor:pointer;
+    transition: background-color 0.5s ease;
+}
+
+#linkButton:active {
+  background-color: white;
+}
 
 
 
