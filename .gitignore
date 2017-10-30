@@ -4,3 +4,6 @@
 # PyCharm IDE files
 .idea/
 .idea/workspace.xml
+
+# Node Modules
+node_modules/
