@@ -12,7 +12,7 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 ## To run this program
 *The backend logic in Python is complete so game can be run from command line.*
 * From command line: `python game.py`
-
+* In the near future, on the web: `www.space-races.com`
 
 
 ## Wireframe Samples
@@ -35,4 +35,4 @@ See [development documents][docs] for all wireframes
 
 
 ## Future Development
-* Build out frontend in vanilla JavaScript so users can play the game on the web
+* Build out frontend with regular JavaScript so users can play the game on the web
