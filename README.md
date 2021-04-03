@@ -1,12 +1,11 @@
 # Space Races
-[Space Races](http://www.space-races.com/) is a mobile-first web app game based on object-oriented Python.
+[www.space-races.com](http://www.space-races.com/) is game written in object-oriented Python, which can currently be played from the console. The designs for the web app are mobile-first but have yet to be implemented beyond a landing page.
 
-The user is tasked with saving humanity on Earth by finding another suitable planet.  It requires puzzle-solving in a choose-your-own-adventure style.
+The user is tasked with saving humanity on Earth by finding another suitable planet. It requires puzzle-solving in a choose-your-own-adventure style.
 
 
 ## Technology & Dependencies
 * For command line version: Python 2.7
-* For web version: Javascript
 
 
 ## To run this program
