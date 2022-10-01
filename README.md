@@ -1,8 +1,9 @@
 # Space Races
-[www.space-races.com](http://www.space-races.com/) is game written in object-oriented Python, which can currently be played in full from the console. The web app designs are mobile-first but have yet to be implemented beyond a landing page.
+[Space Races](https://gentle-headland-63964.herokuapp.com/) is game written in object-oriented Python, which can currently be played in full from the console. The web app designs are mobile-first but have yet to be implemented beyond a landing page.
 
 The user is tasked with saving humanity on Earth by finding another suitable planet. It requires puzzle-solving in a choose-your-own-adventure style.
 
+![LandingPage](https://res.cloudinary.com/dckkkjkuz/image/upload/v1664659706/space-races_landing_page_screenshot_without_tab_zcxbzt.png)
 
 ## Technology & Dependencies
 * For command line version: Python 2.7
@@ -11,7 +12,7 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 ## To run this program
 *The backend logic in Python is complete so game can be run from command line.*
 * From command line: `python game.py`
-* In the near future, on the web: `www.space-races.com`
+* In the future, on the web: `https://gentle-headland-63964.herokuapp.com/`
 
 
 ## Wireframe Samples
