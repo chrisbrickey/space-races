@@ -1,5 +1,5 @@
 # Space Races
-[Space Races](https://gentle-headland-63964.herokuapp.com/) is game written in object-oriented Python, which can currently be played in full from the console. The web app designs are mobile-first but have yet to be implemented beyond a landing page.
+Space Races is game written in object-oriented Python, which can currently be played in full from the console. The web app designs are mobile-first but have yet to be implemented beyond a landing page.
 
 The user is tasked with saving humanity on Earth by finding another suitable planet. It requires puzzle-solving in a choose-your-own-adventure style.
 
