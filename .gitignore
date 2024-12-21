@@ -1,13 +1,17 @@
-# python source files
-*.pyc
-
-# PyCharm IDE files
+# IDE
 .idea/
 .idea/workspace.xml
 
 # Node Modules
 node_modules/
+npm-debug.log
 
-# Finder files
+# Finder
 .DS_Store
 public.zip
+
+# Configuration
+/*.env
+
+# Python compiled files
+*.pyc
