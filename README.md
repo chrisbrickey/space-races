@@ -17,6 +17,10 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 To verify landing page:
 * Install dependencies: `npm install`
 * Launch static assets locally: `open public/index.html` or `heroku local web --port 5001`
+* Update dependencies: 
+    * `npm i -g npm-check-updates`
+    * `ncu  -u`
+    * `npm install`
 
 
 ## Wireframe Samples
