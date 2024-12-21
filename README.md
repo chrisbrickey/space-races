@@ -5,14 +5,18 @@ The user is tasked with saving humanity on Earth by finding another suitable pla
 
 ![LandingPage](https://res.cloudinary.com/dckkkjkuz/image/upload/v1664659706/space-races_landing_page_screenshot_without_tab_zcxbzt.png)
 
-## Technology & Dependencies
-* For command line version: Python 2.7
-
-
 ## To run this program
 *The backend logic in Python is complete so game can be run from command line.*
-* From command line: `python game.py`
-* In the future, on the web: `https://gentle-headland-63964.herokuapp.com/`
+* From command line: `python3 game.py`
+
+## Technology & Dependencies
+* Command line game: Python 3.12.7
+* Hosted content: Node 22.12.0, Express 4.21.2
+
+## Local Development
+To verify landing page:
+* Install dependencies: `npm install`
+* Launch static assets locally: `open public/index.html` or `heroku local web --port 5001`
 
 
 ## Wireframe Samples
